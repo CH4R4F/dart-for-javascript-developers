@@ -47,6 +47,10 @@
         - [`addAll()`](#addall-2)
         - [`remove()`](#remove-2)
         - [`from()`](#from)
+    - [Functions](#functions)
+      - [Optional parameters](#optional-parameters)
+      - [Named parameters](#named-parameters)
+      - [Function as a parameter](#function-as-a-parameter)
 
 ## Introduction
 
@@ -762,3 +766,90 @@ print(set); // {1, 2, 3, 4, 5}
 for more details about the `Set` class, check [this link](https://api.dart.dev/stable/2.18.6/dart-core/Set-class.html)
 
 [Back to Table of Contents](#table-of-contents)
+
+### Functions
+
+Functions are first-class objects in dart, so we can assign them to variables, pass them as arguments to other functions, and return them from other functions.
+
+to declare a function you need first to define the return type, then the name of the function, then the parameters, and finally the body of the function.
+
+```dart
+// function add must return an int
+int add(int a, int b) {
+  return a + b;
+}
+
+// function myName must return a String
+String myName() {
+  return 'Charaf';
+}
+
+// if a function doesn't return any value, we can use void as the return type
+void printName(String name) {
+  print(name);
+}
+
+// we can also create a function with a dynamic return type
+dynamic getRandom(dynamic x) {
+  return x;
+}
+
+getRandom(5); // 5
+getRandom('Ahmed'); // Ahmed
+
+```
+
+Similar to Javascript, `Dart` supports arrow functions.
+
+```dart
+int add(int a, int b) => a + b;
+```
+
+#### Optional parameters
+
+we can define optional parameters in a function by adding a default value to the parameter.
+
+```dart
+int add(int a, [int b = 0]) {
+  return a + b;
+}
+
+add(5); // 5
+add(5, 5); // 10
+```
+
+#### Named parameters
+
+we can define named parameters in a function by adding `{}` to the parameters, and then adding the name of the parameter and the default value.
+
+```dart
+int add(int a, {int b = 0}) {
+  return a + b;
+}
+
+add(5); // 5
+add(5, b: 5); // 10
+```
+
+#### Function as a parameter
+
+we can pass a function as a parameter to another function.
+
+```dart
+int add(int a, int b) {
+  return a + b;
+}
+
+int multiply(int a, int b) {
+  return a * b;
+}
+
+int doMath(int a, int b, Function mathFunction) {
+  return mathFunction(a, b);
+}
+
+doMath(5, 5, add); // 10
+doMath(5, 5, multiply); // 25
+```
+
+Similar to javascript that uses higher-order functions, `Dart` also supports higher-order functions, so you can pass a function as a parameter to another function, and also return a function from another function.
