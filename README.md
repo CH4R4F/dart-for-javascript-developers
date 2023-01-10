@@ -47,10 +47,17 @@
         - [`addAll()`](#addall-2)
         - [`remove()`](#remove-2)
         - [`from()`](#from)
-    - [Functions](#functions)
-      - [Optional parameters](#optional-parameters)
-      - [Named parameters](#named-parameters)
-      - [Function as a parameter](#function-as-a-parameter)
+  - [Functions](#functions)
+    - [Optional parameters](#optional-parameters)
+    - [Named parameters](#named-parameters)
+    - [Function as a parameter](#function-as-a-parameter)
+  - [Classes](#classes)
+    - [Constructors](#constructors)
+    - [Methods](#methods)
+    - [Getters and Setters](#getters-and-setters)
+    - [Inheritance](#inheritance)
+    - [Abstract classes](#abstract-classes)
+    - [Interfaces](#interfaces)
 
 ## Introduction
 
@@ -767,7 +774,7 @@ for more details about the `Set` class, check [this link](https://api.dart.dev/s
 
 [Back to Table of Contents](#table-of-contents)
 
-### Functions
+## Functions
 
 Functions are first-class objects in dart, so we can assign them to variables, pass them as arguments to other functions, and return them from other functions.
 
@@ -805,7 +812,7 @@ Similar to Javascript, `Dart` supports arrow functions.
 int add(int a, int b) => a + b;
 ```
 
-#### Optional parameters
+### Optional parameters
 
 we can define optional parameters in a function by adding a default value to the parameter.
 
@@ -818,7 +825,7 @@ add(5); // 5
 add(5, 5); // 10
 ```
 
-#### Named parameters
+### Named parameters
 
 we can define named parameters in a function by adding `{}` to the parameters, and then adding the name of the parameter and the default value.
 
@@ -831,7 +838,7 @@ add(5); // 5
 add(5, b: 5); // 10
 ```
 
-#### Function as a parameter
+### Function as a parameter
 
 we can pass a function as a parameter to another function.
 
@@ -853,3 +860,235 @@ doMath(5, 5, multiply); // 25
 ```
 
 Similar to javascript that uses higher-order functions, `Dart` also supports higher-order functions, so you can pass a function as a parameter to another function, and also return a function from another function.
+
+for more details about functions in `Dart`, check [this link](https://dart.dev/guides/language/language-tour#functions)
+
+[Back to Table of Contents](#table-of-contents)
+
+## Classes
+
+Classes are the main building blocks of object-oriented programming, and `Dart` is an object-oriented programming language, so we can use classes to create objects.
+
+to create a class, we need to use the `class` keyword, then the name of the class, and finally the body of the class.
+
+```dart
+class Person {
+  String name;
+  int age;
+}
+```
+
+### Constructors
+
+we can use the `constructor` to initialize the properties of the class.
+
+```dart
+class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age) { // we assign the values of the parameters to the properties of the class
+    // this is the constructor
+    // run when we create a new object from the class
+  }
+}
+
+var person = Person('Ahmed', 25);
+print( person.name ); // Ahmed
+```
+
+> Note: the constructor is a method that has the same name as the class, and it doesn't have a return type.
+
+we can also use the `named constructor` to create multiple constructors for the same class.
+
+```dart
+class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age); // default constructor
+
+  Person.fromJson(Map json) { // new constructor named fromJson
+    name = json['name'];
+    age = json['age'];
+  }
+}
+
+var person = Person('Ahmed', 25);
+print( person.name ); // Ahmed
+
+var person2 = Person.fromJson({'name': 'Ahmed', 'age': 25});
+print( person2.name ); // Ahmed
+```
+
+### Methods
+
+methods are functions that are defined inside a class. similar to functions, they take parameters and return a value.
+
+```dart
+class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age);
+
+  void printName() {
+    print(name);
+  }
+}
+
+Person me = Person('Charaf', 20);
+me.printName(); // Charaf
+```
+
+Similar to `javascript` we create objects from classes using the `new` keyword. but we can omit the `new` keyword in `Dart`.
+
+```dart
+Person me = new Person('Charaf', 20);
+Person sarah = Person('sarah', 20);
+```
+
+> Note: the `new` keyword is optional in `Dart`.
+
+> Note: as you can see I added `Person` as a type to the variable `me`, we can also use `var` instead of `Person`.
+
+> Note: similar to javascript objects, you can access properties and methods using `.` notation.
+
+### Getters and Setters
+
+we can use `getters` and `setters` to access and modify the properties of a class.
+to define a getter, we need to use the `get` keyword.
+
+```dart
+class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age);
+
+  String get getName {
+    return name;
+  }
+}
+
+Person me = Person('Charaf', 20);
+print( me.getName ); // Charaf
+```
+
+to define a setter, we need to use the `set` keyword.
+
+```dart
+class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age);
+
+  set setName(String newName) {
+    name = newName;
+  }
+}
+
+Person me = Person('Charaf', 20);
+me.setName = 'Sarah';
+print( me.name ); // Sarah
+```
+
+### Inheritance
+
+Dart is an object-oriented programming language, so we can use inheritance to create subclasses from other classes.
+
+to create a subclass, we need to use the `extends` keyword, then the name of the class that we want to extend, and finally the body of the subclass.
+
+```dart
+class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age);
+
+  void printName() {
+    print(name);
+  }
+}
+
+class Student extends Person {
+  String university;
+
+  Student(String name, int age, this.university) : super(name, age);
+
+  void printUniversity() {
+    print(university);
+  }
+}
+```
+
+> Note: we use the `super` keyword to call the constructor of the parent class.
+
+### Abstract classes
+
+we can use the `abstract` keyword to create an abstract class, and we can't create objects from abstract classes.
+
+```dart
+abstract class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age);
+
+  void printName();
+}
+
+class Student extends Person {
+  String university;
+
+  Student(String name, int age, this.university) : super(name, age);
+
+  void printUniversity() {
+    print(university);
+  }
+
+  @override
+  void printName() {
+    print(name);
+  }
+}
+```
+
+> Note: we use the `@override` annotation to override the method of the parent class.
+
+### Interfaces
+
+we can use the `implements` keyword to implement an interface.
+
+```dart
+abstract class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age);
+
+  void printName();
+}
+
+class Student implements Person {
+  String name;
+  int age;
+  String university;
+
+  Student(this.name, this.age, this.university);
+
+  void printUniversity() {
+    print(university);
+  }
+
+  @override
+  void printName() {
+    print(name);
+  }
+}
+```
+
+> Note: we can't use the `extends` and `implements` keywords together.
+
+[Back to Table of Contents](#table-of-contents)
