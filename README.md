@@ -41,6 +41,12 @@
         - [`putIfAbsent()`](#putifabsent)
         - [`addAll()`](#addall-1)
         - [`remove()`](#remove-1)
+    - [Sets](#sets)
+      - [Set methods](#set-methods)
+        - [`add()`](#add-1)
+        - [`addAll()`](#addall-2)
+        - [`remove()`](#remove-2)
+        - [`from()`](#from)
 
 ## Introduction
 
@@ -660,3 +666,97 @@ print(object); // {age: 25}
 ```
 
 for more details about the `Map` class, check [this link](https://api.dart.dev/stable/2.18.6/dart-core/Map-class.html)
+
+[Back to Table of Contents](#table-of-contents)
+
+### Sets
+
+Sets are data structures that contain unique values, similar to `Set` in javascript.
+
+```dart
+var set = {1, 2, 2, 2, 3, 3, 4, 5};
+print(set); // {1, 2, 3, 4, 5} remove the duplicates
+```
+
+we can also use `Set` class to declare a set.
+
+```dart
+Set<int> set = {1, 2, 3, 4, 5};
+// Set is the type of the variable
+// <int> used to define the type of the values in the set
+```
+
+declaring an empty Set may be confusing with the `Map` class, so we can use the `Set` constructor to declare an empty set.
+
+```dart
+var set = Set(); // empty set
+var set = <int>{}; // empty set with values of type int
+
+var invalidSet = {}; // this is a map
+```
+
+> Note: to get the type of a variable, we can use the `runtimeType` property.
+
+```dart
+Set set = {1, 2, 3, 4, 5};
+Map map = {'name': 'Ahmed', 'age': 25};
+int number = 5;
+String name = 'Ahmed';
+bool isTrue = true;
+
+print(set.runtimeType); // _CompactLinkedHashSet<int>
+print(map.runtimeType); // _InternalLinkedHashMap<String, dynamic>
+print(number.runtimeType); // int
+print(name.runtimeType); // String
+print(isTrue.runtimeType); // bool
+```
+
+#### Set methods
+
+##### `add()`
+
+we can use the `add()` method to add a value to the set.
+
+```dart
+Set set = {1, 2, 3, 4, 5};
+set.add(6);
+
+print(set); // {1, 2, 3, 4, 5, 6}
+```
+
+##### `addAll()`
+
+we can use the `addAll()` method to add a list of values to the set.
+
+```dart
+Set set = {1, 2, 3, 4, 5};
+set.addAll([6, 6, 7, 8, 8, 8]);
+
+print(set); // {1, 2, 3, 4, 5, 6, 7, 8}
+```
+
+##### `remove()`
+
+we can use the `remove()` method to remove a value from the set.
+
+```dart
+Set set = {1, 2, 3, 4, 5};
+set.remove(5);
+
+print(set); // {1, 2, 3, 4}
+```
+
+<!-- set from array -->
+
+##### `from()`
+
+we can use the `from()` method to create a set from a list.
+
+```dart
+var array = [1, 2, 2, 2, 3, 3, 4, 5];
+var set = Set.from(array);
+
+print(set); // {1, 2, 3, 4, 5}
+```
+
+for more details about the `Set` class, check [this link](https://api.dart.dev/stable/2.18.6/dart-core/Set-class.html)
