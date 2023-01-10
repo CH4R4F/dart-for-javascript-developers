@@ -760,3 +760,5 @@ print(set); // {1, 2, 3, 4, 5}
 ```
 
 for more details about the `Set` class, check [this link](https://api.dart.dev/stable/2.18.6/dart-core/Set-class.html)
+
+[Back to Table of Contents](#table-of-contents)
