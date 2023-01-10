@@ -36,6 +36,11 @@
         - [`remove()`](#remove)
         - [`removeAt()`](#removeat)
         - [`removeLast()`](#removelast)
+    - [Maps](#maps)
+      - [Map methods](#map-methods)
+        - [`putIfAbsent()`](#putifabsent)
+        - [`addAll()`](#addall-1)
+        - [`remove()`](#remove-1)
 
 ## Introduction
 
@@ -564,4 +569,94 @@ for more details about the `List` class, check [this link](https://api.dart.dev/
 
 [Back to Table of Contents](#table-of-contents)
 
-// TODO: finish data structures
+### Maps
+
+Maps are key-value pairs data structures in dart, similar to `Map` in javascript.
+
+```dart
+var object = {
+  'name': 'Ahmed',
+  'age': 25,
+};
+```
+
+you can also declare it using the `Map` class.
+
+```dart
+Map<String, dynamic> object = {
+  'name': 'Ahmed',
+  'age': 25,
+};
+// Map is the type of the variable
+// <String, dynamic> used to define the type of the keys and values in the map
+```
+
+> Note: the keys in map can be of any type, for example, we can use numbers and booleans as keys.
+
+```dart
+var object = {
+  1: 'Ahmed',
+  true: 'Mohamed',
+  1.6: 'Ali',
+};
+```
+
+> Note: unlike Javascript, you can't use dot notation to access the value of a key in a map, you have to use the `[]` notation.
+
+```dart
+var object = {
+  'name': 'Ahmed',
+  'age': 25,
+};
+
+print(object.name); // this will throw an error
+print(object['name']); // Ahmed
+```
+
+#### Map methods
+
+##### `putIfAbsent()`
+
+we can use the `putIfAbsent()` method to add a key-value pair to the map if the key doesn't exist. it takes two parameters, the first one is the key, and the second one is a function that returns the value of the key.
+
+```dart
+var object = {
+  'name': 'Ahmed',
+  'age': 25,
+};
+
+object.putIfAbsent('new', () => 'yesss');
+object.putIfAbsent('name', () => 'Mohamed');
+
+print(object); // {name: Ahmed, age: 25, new: yesss}
+```
+
+##### `addAll()`
+
+we can use the `addAll()` method to add a map of key-value pairs to the map.
+
+```dart
+var object = {
+  'name': 'Ahmed',
+  'age': 25,
+};
+
+object.addAll({'new': 'yesss', 'name': 'Charaf'});
+print(object); // {name: Charaf, age: 25, new: yesss}
+```
+
+##### `remove()`
+
+we can use the `remove()` method to remove a key-value pair from the map.
+
+```dart
+var object = {
+  'name': 'Ahmed',
+  'age': 25,
+};
+
+object.remove('name');
+print(object); // {age: 25}
+```
+
+for more details about the `Map` class, check [this link](https://api.dart.dev/stable/2.18.6/dart-core/Map-class.html)
