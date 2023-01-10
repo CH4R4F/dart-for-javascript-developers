@@ -24,7 +24,7 @@
     - [`while` loop](#while-loop)
     - [`switch` statement](#switch-statement)
   - [conditional expressions](#conditional-expressions)
-    - [ternaly operator](#ternaly-operator)
+    - [ternary operator](#ternary-operator)
     - [null-aware operators](#null-aware-operators)
   - [Collections](#collections)
     - [Lists](#lists)
@@ -351,7 +351,7 @@ switch (age) {
 
 ## conditional expressions
 
-### ternaly operator
+### ternary operator
 
 we can use the `?` and `:` operators to define a conditional expression.
 
