@@ -84,6 +84,8 @@ main() {
 > Note: The `main()` function is the entry point for all Dart apps.
 >
 > the `print()` function in the equivalent of `console.log()` in JavaScript
+>
+> Oops I forget to note that `;` is required after each expression in Dart
 
 Run the app from the command line:
 
